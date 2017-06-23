@@ -20,7 +20,7 @@ router.get('/blog-posts', (req, res) => {
   res.json(BlogPosts.get());
 });
 
-router.post('/blog-posts', jsonParser, (req, res) => {
+router.post('/', jsonParser, (req, res) => {
   // ensure `name` and `budget` are in request body
   const requiredFields = ['title', 'content', 'author', 'publishDate'];
   for (let i=0; i<requiredFields.length; i++) {
@@ -42,7 +42,7 @@ router.post('/blog-posts', jsonParser, (req, res) => {
 // item id in updated item object match. if problems with any
 // of that, log error and send back status code 400. otherwise
 // call `ShoppingList.update` with updated item.
-router.put('/blog-posts/:id', jsonParser, (req, res) => {
+router.put('/:id', jsonParser, (req, res) => {
   const requiredFields = ['title', 'content', 'author', 'publishDate'];
   for (let i=0; i<requiredFields.length; i++) {
     const field = requiredFields[i];
@@ -72,7 +72,7 @@ router.put('/blog-posts/:id', jsonParser, (req, res) => {
 
 // when DELETE request comes in with an id in path,
 // try to delete that item from ShoppingList.
-router.delete('/blog-posts/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
   BlogPosts.delete(req.params.id);
   console.log(`Deleted blog post \`${req.params.ID}\``);
   res.status(204).end();

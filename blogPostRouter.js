@@ -16,7 +16,7 @@ BlogPosts.create('Food', 'Pasta is yummy', 'EricD', '6/14/2017');
 
 // when the root of this router is called with GET, return
 // all current ShoppingList items
-router.get('/blog-posts', (req, res) => {
+router.get('/', (req, res) => {
   res.json(BlogPosts.get());
 });
 
